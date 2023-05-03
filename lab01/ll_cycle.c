@@ -3,18 +3,16 @@
 #include <stdio.h>
 
 int ll_has_cycle(node *head) {
-	node * tortoise;
-	node * hare;
+	node * tortoise = head;
+	node * hare = head;
 	
 
-	while((hare->next)!=NULL){
-		(hare->next)+=2;
-		if((hare->next) == NULL){
-			printf("acyclic");
-		}
-		(tortoise->next)++;
-		if((hare->next) == (tortoise->next)){
-			printf("cyclic");
+	while(hare!=NULL && (hare->next)!=NULL){
+		tortoise = tortoise->next;
+		hare = hare->next->next;
+
+		if(tortoise == hare){
+			return 2;
 		}
 	}
     return 0;
